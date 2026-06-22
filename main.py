@@ -9,7 +9,13 @@ Usage:
 
 import json
 import os
+import sys
 import time
+
+# Do not let a legacy Windows console abort the orchestration before imports
+# have a chance to configure their own logging.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(errors="backslashreplace")
 
 
 def main():
